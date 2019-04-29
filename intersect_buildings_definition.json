@@ -1,0 +1,34 @@
+{
+    "inputPortDescriptors": [{
+        "required": true,
+        "description": "Directory containing a shapefile building footprint geometries.",
+        "name": "footprints_shp",
+        "type": "directory"
+    }, {
+        "required": true,
+        "description": "Directory containing a shapefile of flood extent boundaries.",
+        "name": "flood_shp",
+        "type": "directory"
+    }], 
+    "outputPortDescriptors": [{
+        "required": true,
+        "description": "Shapefile with intersection of buildings and flood extent.",
+        "name": "footprints_flood_results",
+        "type": "directory"
+    }],
+    "containerDescriptors": [{
+        "type": "DOCKER",
+        "command": "",
+        "properties": {
+            "image": "egolden/classify_flooded_footprints_docker:latest"
+        }
+    }],
+    "description": "Intersects building footprints with flood extent and classifies buildings as 0 - no flood, 1 - observed flood, 2 - inferred flooding..",
+    "name": "classify_flooded_footprints",
+    "version": "0.0.1",
+    "taskOwnerEmail": "elizabeth.golden@digitalglobe.com",
+    "properties": {
+        "isPublic": false,
+        "timeout": 7200
+    }
+}

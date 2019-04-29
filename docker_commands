@@ -1,0 +1,33 @@
+DOCKER
+# start phresh
+docker system prune -a
+
+# build the docker image with a Dockerfile
+docker build -t egolden/classify_flooded_footprints_docker .
+
+# test the docker with test data
+docker run -it --rm -v $PWD/small_inputs:/mnt/work/input egolden/classify_flooded_footprints_docker bash
+
+# login to dockerhub
+--username egolden --password <password>
+
+# push the docker image to dockerhub
+docker push egolden/classify_flooded_footprints_docker
+
+# add collaborators
+tdgpdeploy
+
+GBDXTOOLS
+# start gbdxtools environment and start python
+source activate gbdxtools
+ipython
+
+# register task
+from gbdxtools import Interface
+gbdx = Interface()
+
+
+def_file = '/Users/elizabethgolden/Dropbox/DG/code/scratch/docker_projects/intersect_buildings/intersect_buildings_definition.json'
+gbdx.task_registry.register(json_filename=def_file)
+
+test = gbdx.Task('classify_flooded_footprints')
