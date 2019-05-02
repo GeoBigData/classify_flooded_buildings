@@ -20,12 +20,13 @@
         "type": "DOCKER",
         "command": "",
         "properties": {
-            "image": "egolden/classify_flooded_footprints_docker:latest"
+            "image": "egolden/classify_flooded_footprints_docker:latest",
+            "domain": "r44xlarge"
         }
     }],
     "description": "Intersects building footprints with flood extent and classifies buildings as 0 - no flood, 1 - observed flood, 2 - inferred flooding..",
     "name": "classify_flooded_footprints",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "taskOwnerEmail": "elizabeth.golden@digitalglobe.com",
     "properties": {
         "isPublic": false,
